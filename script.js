@@ -1,60 +1,66 @@
-const questions = [
+const questions1 = [
   {
-    question: "Apa ibukota Indonesia?",
-    choices: ["Jakarta", "Surabaya", "Bandung", "Medan"],
-    correctAnswer: 0,
+    question1: "tanggal berapa indonesia merdeka?",
+    answer: ["1445", "1945", "1888", "1956"],
+    currentAnser: 1,
   },
   {
-    question: "Berapakah hasil dari 2 + 2?",
-    choices: ["3", "4", "5", "6"],
-    correctAnswer: 1,
+    question1: "kapan fiat menormalisasikan dolar?",
+    answer: ["1445", "1945", "1881", "1972"],
+    currentAnser: 3,
   },
   {
-    question: "Siapa penemu teori relativitas?",
-    choices: [
-      "Isaac Newton",
-      "Albert Einstein",
-      "Stephen Hawking",
-      "Galileo Galilei",
-    ],
-    correctAnswer: 1,
+    question1: "mengapa penting sekarang belajar bahasa pemograman?",
+    answer: ["ikut tren", "menyesuaikan zaman", "kebutuhan", "semua benar"],
+    currentAnser: 3,
+  },
+  {
+    question1: "type data apa yang menyimpan sebuah nilai yang banyak?",
+    answer: ["aritmatika", "boolen", "variable", "array"],
+    currentAnser: 3,
+  },
+  {
+    question1: "type data apa yang menggunakan logika?",
+    answer: ["aritmatika", "array", "variable", "boolen"],
+    currentAnser: 3,
   },
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
+const container1 = document.getElementById("container1");
+const textContainer1 = document.getElementById("text-container1");
+const text1 = document.getElementById("text1");
+const choiceContainer = document.getElementById("choice-container1");
+const buttonChoice = document.querySelectorAll(".choice1");
+const result1 = document.getElementById("result1");
+let currentQuestionIndex2 = 0;
+let score2 = 0;
 
-function displayQuestion() {
-  const questionText = document.getElementById("question-text");
-  const choicesButtons = document.querySelectorAll(".choice");
+function displayQuestion1() {
+  if (currentQuestionIndex2 < questions1.length) {
+    const currentQuestion1 = questions1[currentQuestionIndex2];
+    text1.textContent = currentQuestion1.question1;
 
-  if (currentQuestionIndex < questions.length) {
-    const currentQuestion = questions[currentQuestionIndex];
-    questionText.textContent = currentQuestion.question;
-
-    for (let i = 0; i < currentQuestion.choices.length; i++) {
-      choicesButtons[i].textContent = currentQuestion.choices[i];
+    for (let i = 0; i < currentQuestion1.answer.length; i++) {
+      buttonChoice[i].textContent = currentQuestion1.answer[i];
     }
   } else {
-    questionText.textContent = "Quiz Selesai!";
-    for (const button of choicesButtons) {
+    text1.textContent = "Quiz Selesai!";
+    for (const button of buttonChoice) {
       button.style.display = "none";
     }
-    document.getElementById(
-      "result"
-    ).textContent = `Skor Anda: ${score}/${questions.length}`;
+    result1.textContent = `Skor Anda: ${score2}/${questions1.length}`;
   }
 }
 
-function checkAnswer(choiceIndex) {
-  const currentQuestion = questions[currentQuestionIndex];
+function checkAnswer(choice1Index) {
+  const currentQuestion1 = questions1[currentQuestionIndex2];
 
-  if (choiceIndex === currentQuestion.correctAnswer) {
-    score++;
+  if (choice1Index === currentQuestion1.currentAnser) {
+    score2++;
   }
 
-  currentQuestionIndex++;
-  displayQuestion();
+  currentQuestionIndex2++;
+  displayQuestion1();
 }
 
-displayQuestion();
+displayQuestion1();
